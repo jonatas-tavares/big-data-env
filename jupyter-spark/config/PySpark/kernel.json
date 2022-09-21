@@ -1,0 +1,14 @@
+{
+    "display_name": "PySpark",
+    "language": "python",
+    "argv": [
+     "/usr/bin/python3",
+     "-m",
+     "ipykernel_launcher",
+     "-f",
+     "{connection_file}"
+    ],
+    "env": {
+        "PYTHONSTARTUP": "/usr/spark/python/pyspark/shell.py"
+    }
+}
