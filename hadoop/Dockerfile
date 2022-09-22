@@ -11,8 +11,6 @@ ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 # Use if debugging
 #COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
 
-RUN apt-get clean
-
 # Tuning and installing hadoop components
 RUN mkdir -p usr/hadoop /usr/hadoop/dfs/name /usr/hadoop/dfs/data \
     && apt-get update \
@@ -47,6 +45,8 @@ ENV PATH $PATH:$JAVA_HOME/bin
 # Add Hadoop to path
 ENV PATH=$PATH:$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin
+#ADICIONADO
+ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 
 EXPOSE 8020 8088
 
