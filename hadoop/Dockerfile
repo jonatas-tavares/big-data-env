@@ -2,22 +2,18 @@ FROM openjdk:8-jdk-slim
 
 LABEL maintainer="Jônatas Tavares <jontavpess@gmail.com>"
 
-#Setar JAVA
-ENV JAVA_HOME=$JAVA_HOME
-ENV PATH $PATH:$JAVA_HOME/bin
-
-# Variaveis de ambiente do Hadoop
+# Hadoop environment variables
 ENV HADOOP_VERSION 3.3.4
 ENV HADOOP_MINOR_VERSION 3.3
 ENV HADOOP_HOME /usr/hadoop
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
-#Adicionar hdfs ao path
-ENV PATH=$PATH:$HADOOP_HOME
-ENV PATH=$PATH:$HADOOP_HOME/bin
 
+# Use if debugging
 #COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
 
-# Ajustes e instalação dos componentes do cluster
+RUN apt-get clean
+
+# Tuning and installing hadoop components
 RUN mkdir -p usr/hadoop /usr/hadoop/dfs/name /usr/hadoop/dfs/data \
     && apt-get update \
     && apt-get install -y wget ssh \
@@ -26,21 +22,31 @@ RUN mkdir -p usr/hadoop /usr/hadoop/dfs/name /usr/hadoop/dfs/data \
     && rm /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
     && rm -rf ${HADOOP_HOME}/hadoop-${HADOOP_VERSION}/share/doc \
     && chown -R root:root ${HADOOP_HOME} \
-    #Remove cache do apt-get
+    # Remove apt-get cache and temporary files
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && apt-get clean \
-    # Keys dos nodes. Necessarias para se comunicarem por SSH
+    # Node keys, required to communicate over SSH
     && ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa \
     && cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys \
     && chmod 600 ~/.ssh/authorized_keys
 
-#ficar atento a estrutura de pastas
+# File to turn off strict checking of ssh keys
 COPY ./config/config /root/.ssh
-RUN chmod 600 /root/.ssh/config 
+# Modifing permissions of config file
+RUN chmod 600 /root/.ssh/config
 
+# Copying configuration files
 COPY ./config/*.xml ${HADOOP_CONF_DIR}
 COPY ./config/workers ${HADOOP_CONF_DIR}
 COPY ./scripts/bootstrap.sh /
+
+# Set JAVA environment
+ENV JAVA_HOME=$JAVA_HOME
+ENV PATH $PATH:$JAVA_HOME/bin
+
+# Add Hadoop to path
+ENV PATH=$PATH:$HADOOP_HOME
+ENV PATH=$PATH:$HADOOP_HOME/bin
 
 EXPOSE 8020 8088
 

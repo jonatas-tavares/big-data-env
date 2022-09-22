@@ -13,9 +13,8 @@ PROBLEMA ATUAL É CAUSADO PELO JOB NÃO CONSEGUIR SER EXECUTADO PELO yarn
 -> não funcionou
 > Provavelmente há erro na configuração dos recursos checar todos
 ---> o problema está no spark.executor.memory, quando coloco 2g não funciona
-
 ******RESOLVER PROBLEMA DO LIMITE DE 1G spark.executor.memory
-
+-->> Na real o problema está na alocação de todos os recursos, provavelmente na divisão entre Yarn e Spark, map reduce vs sparkjob
 
 
 SOBRE A QUESTÃO DO KERNEL, EU PROVAVELMENTE QUERO CRIAR UM CUSTOMIZADO QUE RODE SEMPRE A CRIAÇÃO DO SPARK CONTEXT
