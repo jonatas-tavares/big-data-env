@@ -1,0 +1,10 @@
+Geral:
+    - 
+
+JupyterSpark:
+    -
+    - documentar e resolver problema de alocação junto ao Yarn
+
+Hive:
+    -Ler documentação e criar Dockerfile 
+

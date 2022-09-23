@@ -18,9 +18,6 @@ Está no mapred-site.xml  :
 
 ###########################################
 KERNEl
-
 /usr/share/jupyter/kernels/
-
 PYTHONSTARTUP 
-
 Pra não ter que criar sessão toda hora utilizar isso
