@@ -1,1 +1,1 @@
-docker build  -f ./docker-images/hadoop/Dockerfile -t jontavpess/hadoop-base ./hadoop
+docker build  -f ./docker-images/hadoop/Dockerfile -t jontavpess/hadoop-base ./docker-images/hadoop

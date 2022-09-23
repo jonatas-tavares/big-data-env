@@ -1,5 +1,9 @@
 Geral:
-    - 
+    - Escrever Artigo
+    - Limpar docker-compose
+
+Hadoop:
+    - Remover arquivos cópias
 
 JupyterSpark:
     -
