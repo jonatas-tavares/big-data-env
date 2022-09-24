@@ -1,12 +1,14 @@
 Geral:
     - Escrever Artigo
     - Limpar docker-compose
-
-Hadoop:
     - Remover arquivos cópias
 
+
+Hadoop:
+    - 
+
 JupyterSpark:
-    -
+    - Ajeitar o diretório onde o júpter é iniciado @done
     - documentar e resolver problema de alocação junto ao Yarn
 
 Hive:

@@ -41,7 +41,7 @@ services:
     container_name: jupyter-spark
     hostname: jupyter-spark
     volumes:
-      - ./user_data/notebooks:/mnt/notebooks
+      - ./user_data/jupyter:/mnt/jupyter
       - ./input:/usr/input
     # env_file:
     #   - ./docker-images/jupyter-spark/config/jupyter-spark.env
