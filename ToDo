@@ -3,13 +3,12 @@ Geral:
     - Limpar docker-compose
     - Remover arquivos cópias
 
-
 Hadoop:
     - 
 
 JupyterSpark:
     - Ajeitar o diretório onde o júpter é iniciado @done
-    - documentar e resolver problema de alocação junto ao Yarn
+    - documentar e resolver problema de alocação de memória junto ao Yarn
 
 Hive:
     -Ler documentação e criar Dockerfile 
