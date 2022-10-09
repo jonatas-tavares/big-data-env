@@ -1,1 +1,1 @@
-docker build  -f ./docker-images/jupyter-spark/Dockerfile_dev -t jontavpess/jupyter-spark-base ./docker-images/jupyter-spark
+docker build  -f ./docker-images/jupyter-spark/Dockerfile -t jontavpess/jupyter-spark-base ./docker-images/jupyter-spark

@@ -23,6 +23,8 @@ resolvi escrevendo um kernel customizado em json para o jupyter, adicionando o p
 Agora falta automatizar esse processo
 --> Automatizado no dockerfile
 
+A necessidade de rebuildar é causada pelo This is called layer caching.
+
 
 
 

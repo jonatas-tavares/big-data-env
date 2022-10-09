@@ -1,1 +1,19 @@
+
 findspark
+
+# Plot libs
+matplotlib
+dash
+
+# ML libs
+scikit-learn
+
+# Numeric libs
+numpy
+pandas
+pyarrow
+fastparquet
+
+# Functionable libs
+nbconvert>=6.4.4
+jinja2>=3.0.3
