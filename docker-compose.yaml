@@ -11,13 +11,12 @@ services:
       - ./user_data/hdfs/name:/usr/hadoop/dfs/name
     ports:
       - "8020:8020"
-      - "8088:8088"
       - "9870:9870"
       - "50030:50030"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1536m
+    deploy:
+      resources:
+        limits:
+          memory: 3072m
 
   datanode:
     image: jontavpess/hadoop-base:latest
@@ -31,10 +30,10 @@ services:
       - namenode
     ports:
       - "8021:8021"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1536m
+    deploy:
+      resources:
+        limits:
+          memory: 3072m
 
   jupyter-spark:
     image: jontavpess/jupyter-spark-base:latest
@@ -43,16 +42,14 @@ services:
     volumes:
       - ./user_data/jupyter:/mnt/jupyter
       - ./input:/usr/input
-    # env_file:
-    #   - ./docker-images/jupyter-spark/config/jupyter-spark.env
-    # environment:
-    #   SPARK_MASTER: local[*]
     depends_on:
      - "namenode"
      - "datanode"
     ports:
       - 8888:8888
+      - 9000:9000
       - 4040:4040
-      # - 4041:4041
-      # - 4042:4042
-      # - 4043:4043
+    deploy:
+      resources:
+        limits:
+          memory: 3072m
