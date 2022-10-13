@@ -20,13 +20,13 @@ ENV SPARK_VERSION 3.3.0
 ENV SPARK_HOME /usr/spark
 
 # Use if debugging
-#COPY ./assets/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz /tmp
+COPY ./assets/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz /tmp
 
 RUN apt-get update \
     && apt-get install -y \
     python3 python3-pip python3-dev jupyter \
     # Spark
-    && wget -P /tmp "http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz" \
+    #&& wget -P /tmp "http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz" \
     && mkdir ${SPARK_HOME} \
     && tar zvxf /tmp/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz -C ${SPARK_HOME} --strip-components=1 \
     && chown -R root:root ${SPARK_HOME} \

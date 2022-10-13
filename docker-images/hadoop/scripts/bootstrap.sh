@@ -14,36 +14,34 @@ if [ "$HOSTNAME" = namenode ]; then
 
         touch $CONTAINER_ALREADY_STARTED
         echo "-- First container startup --"
-        sleep 5
-        # YOUR_JUST_ONCE_LOGIC_HERE
-
+        sleep 2
+        
+        # Verify if Docker volume persistent data exists 
         if [ -z "$(ls -A $DIR)" ]; then
+
             echo "-- $DIR is Empty --"
-            sleep 5
+            echo "-- Formating Namenode --"
+            sleep 2
 
             hdfs namenode -format
-            hdfs --daemon start namenode
-            yarn --daemon start resourcemanager
 
         else 
-            echo "-- Take action $DIR is not Empty --"
 
-            sleep 5
-            
-            hdfs --daemon start namenode
-            yarn --daemon start resourcemanager
+            echo "-- $DIR is not Empty --"
+            sleep 2
 
-        fi
+        fi  
 
     else
 
         echo "-- Not first container startup --"
-        sleep 5
-
-        hdfs --daemon start namenode
-        yarn --daemon start resourcemanager
 
     fi
+    
+    echo "-- Starting Namenode --"
+    sleep 2
+    hdfs --daemon start namenode
+    yarn --daemon start resourcemanager
 
 else
 

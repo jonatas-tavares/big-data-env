@@ -1,6 +1,6 @@
 Geral:
     - Escrever Artigo
-    - Limpar docker-compose
+    - Limpar docker-compose @done
     - Remover arquivos cópias
     - Rever questão dos limites de memória, HDFS, Spark e containers do docker
     
@@ -10,7 +10,7 @@ Hadoop:
 JupyterSpark:
     - Ajeitar o diretório onde o júpter é iniciado @done
     - documentar e resolver problema de alocação de memória junto ao Yarn
-    - Criar kernel customizado que crie sessões spark customizadas
+    - Criar kernel customizado que crie sessões spark customizadas @done
 
 Hive:
     -Ler documentação e criar Dockerfile 

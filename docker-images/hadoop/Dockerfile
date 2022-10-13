@@ -9,13 +9,13 @@ ENV HADOOP_HOME /usr/hadoop
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 
 # Use if debugging
-#COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
+COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
 
 # Tuning and installing hadoop components
 RUN mkdir -p usr/hadoop /usr/hadoop/dfs/name /usr/hadoop/dfs/data \
     && apt-get update \
     && apt-get install -y wget ssh \
-    && wget -P /tmp "http://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
+    #&& wget -P /tmp "http://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
     && tar zvxf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C ${HADOOP_HOME} --strip-components=1 \
     && rm /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
     && rm -rf ${HADOOP_HOME}/hadoop-${HADOOP_VERSION}/share/doc \
