@@ -33,7 +33,9 @@ RUN apt-get update \
     # Cleaning
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && apt-get clean \
-    && rm -rf /bootstrap.sh
+    && rm -rf /bootstrap.sh \
+    # Assuring that jupyter kernel folder exists to copy custom kernel
+    && mkdir -p /usr/share/jupyter/kernels/
 
 
 EXPOSE 4040 9000 8888
@@ -49,16 +51,14 @@ ENV PATH $PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/pytho
 #ADICIONADO
 #ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 
+# Istalling Python libraries
+COPY ./config/requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
+
 # Copying configuration files
 COPY config/spark-defaults.conf ${SPARK_HOME}/conf/
 COPY config/slaves ${SPARK_HOME}/conf/
-COPY ./config/requirements.txt /tmp
-
-# Istalling Python libraries
-RUN pip install -r /tmp/requirements.txt \
-    && mkdir -p /usr/share/jupyter/kernels/
 COPY config/PySpark /usr/share/jupyter/kernels/PySpark
-
 COPY ./scripts/bootstrap.sh /
 
 CMD ["bin/bash", "/bootstrap.sh"]

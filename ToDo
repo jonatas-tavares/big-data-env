@@ -1,17 +1,20 @@
 Geral:
-    - Configurar dockcerfiles
+    - Configurar dockcerfile
     - Escrever Artigo
     - Limpar docker-compose @done
     - Remover arquivos cópias
-    - Rever questão dos limites de memória, HDFS, Spark e containers do docker
+    - Rever questão dos limites de memória, HDFS, Spark e containers do docker @done
     
 Hadoop:
     - 
 
 JupyterSpark:
     - Ajeitar o diretório onde o júpter é iniciado @done
-    - documentar e resolver problema de alocação de memória junto ao Yarn
+    - documentar e resolver problema de alocação de memória junto ao Yarn @done
     - Criar kernel customizado que crie sessões spark customizadas @done
+    - spark cria um executor um para cada node, tentar limitar a 1 por cluster (Parece que não é possível)
+    - Funciona normalmente porém kernel morre pra aplicações muito pesadas (ex:ler todas as linahs para o pandas)
+    - 
 
 Hive:
     -Ler documentação e criar Dockerfile 

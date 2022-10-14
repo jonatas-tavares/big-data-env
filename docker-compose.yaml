@@ -34,7 +34,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
+          memory: 1024m
 
   datanode-2:
     image: jontavpess/hadoop-base:latest
@@ -67,7 +67,7 @@ services:
     ports:
       - 8888:8888
       - 9000:9000 #inútil
-      - 4040:4040 #inútil
+      - 4040:4040 
     deploy:
       resources:
         limits:
