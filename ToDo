@@ -1,4 +1,5 @@
 Geral:
+    - Configurar dockcerfiles
     - Escrever Artigo
     - Limpar docker-compose @done
     - Remover arquivos cópias

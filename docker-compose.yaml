@@ -11,29 +11,47 @@ services:
       - ./user_data/hdfs/name:/usr/hadoop/dfs/name
     ports:
       - "8020:8020"
-      - "9870:9870"
-      - "50030:50030"
+      - "8088:8088"
+      - "9870:9870" 
+      - "50030:50030" #inútil
     deploy:
       resources:
         limits:
-          memory: 3072m
+          memory: 512m
 
-  datanode:
+  datanode-1:
     image: jontavpess/hadoop-base:latest
-    container_name: datanode
-    hostname: datanode
+    container_name: datanode-1
+    hostname: datanode-1
     volumes:
       - ./user_data/hdfs/data:/usr/hadoop/dfs/data
+    ports:
+      - "8042:8042"
     environment:
       SERVICE_PRECONDITION: "namenode:8020"
     depends_on:
       - namenode
-    ports:
-      - "8021:8021"
     deploy:
       resources:
         limits:
-          memory: 3072m
+          memory: 512m
+
+  datanode-2:
+    image: jontavpess/hadoop-base:latest
+    container_name: datanode-2
+    hostname: datanode-2
+    volumes:
+      - ./user_data/hdfs/data:/usr/hadoop/dfs/data
+    ports:
+      - "8043:8042"
+    environment:
+      SERVICE_PRECONDITION: "namenode:8020"
+    depends_on:
+      - namenode
+    deploy:
+      resources:
+        limits:
+          memory: 1024m
 
   jupyter-spark:
     image: jontavpess/jupyter-spark-base:latest
@@ -44,12 +62,13 @@ services:
       - ./input:/usr/input
     depends_on:
      - "namenode"
-     - "datanode"
+     - "datanode-1"
+     - "datanode-2"
     ports:
       - 8888:8888
-      - 9000:9000
-      - 4040:4040
+      - 9000:9000 #inútil
+      - 4040:4040 #inútil
     deploy:
       resources:
         limits:
-          memory: 3072m
+          memory: 512m
