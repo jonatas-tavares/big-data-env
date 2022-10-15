@@ -12,9 +12,9 @@ JupyterSpark:
     - Ajeitar o diretório onde o júpter é iniciado @done
     - documentar e resolver problema de alocação de memória junto ao Yarn @done
     - Criar kernel customizado que crie sessões spark customizadas @done
-    - spark cria um executor um para cada node, tentar limitar a 1 por cluster (Parece que não é possível)
-    - Funciona normalmente porém kernel morre pra aplicações muito pesadas (ex:ler todas as linahs para o pandas)
-    - 
+    - spark cria um executor para cada node, tentar limitar a 1 por cluster (Parece que não é possível) @done
+    - Verificar se funciona com a memória cravada 800 (Cada dadanode) @done
+    - Futuramente adicionar kernels customizados
 
 Hive:
     -Ler documentação e criar Dockerfile 

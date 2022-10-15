@@ -25,6 +25,13 @@ Agora falta automatizar esse processo
 
 A necessidade de rebuildar é causada pelo This is called layer caching.
 
+spark cria um executor um para cada node, tentar limitar a 1 por cluster (Parece que não é possível)
+
+manter arquitetura e somente adicionar mais data nodes quando quiser mais memória (não funciona para o pandas_df mas sim para o spark_df)
+-> Para ler os dados do enem pelo spark é necessário pelo menos dois executores de 896mb
+--> Isso pode ser feito Aumentando os recursos de um datanode ou adicionando outro datanode
+
+com dois datanodes yarn.nodemanager.resource.memory-mb 896 é suficiente
 
 
 

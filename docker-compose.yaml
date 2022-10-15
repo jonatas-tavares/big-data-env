@@ -34,24 +34,41 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1024m
+          memory: 1024g
 
-  datanode-2:
-    image: jontavpess/hadoop-base:latest
-    container_name: datanode-2
-    hostname: datanode-2
-    volumes:
-      - ./user_data/hdfs/data:/usr/hadoop/dfs/data
-    ports:
-      - "8043:8042"
-    environment:
-      SERVICE_PRECONDITION: "namenode:8020"
-    depends_on:
-      - namenode
-    deploy:
-      resources:
-        limits:
-          memory: 1024m
+  # datanode-2:
+  #   image: jontavpess/hadoop-base:latest
+  #   container_name: datanode-2
+  #   hostname: datanode-2
+  #   volumes:
+  #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
+  #   ports:
+  #     - "8043:8042"
+  #   environment:
+  #     SERVICE_PRECONDITION: "namenode:8020"
+  #   depends_on:
+  #     - namenode
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 512m
+
+  # datanode-3:
+  #   image: jontavpess/hadoop-base:latest
+  #   container_name: datanode-3
+  #   hostname: datanode-3
+  #   volumes:
+  #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
+  #   ports:
+  #     - "8044:8042"
+  #   environment:
+  #     SERVICE_PRECONDITION: "namenode:8020"
+  #   depends_on:
+  #     - namenode
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 1024m
 
   jupyter-spark:
     image: jontavpess/jupyter-spark-base:latest
@@ -62,8 +79,6 @@ services:
       - ./input:/usr/input
     depends_on:
      - "namenode"
-     - "datanode-1"
-     - "datanode-2"
     ports:
       - 8888:8888
       - 9000:9000 #inútil
@@ -71,4 +86,4 @@ services:
     deploy:
       resources:
         limits:
-          memory: 512m
+          memory: 512m #Se for limitada, impossível ler todo dataset para memória com DF do pandas / precisa em torno de 3g pra conseguir ler todo o dataframe no pandas
