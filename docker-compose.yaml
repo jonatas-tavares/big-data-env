@@ -34,7 +34,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 1024g
+          memory: 1152m
 
   # datanode-2:
   #   image: jontavpess/hadoop-base:latest
@@ -47,11 +47,11 @@ services:
   #   environment:
   #     SERVICE_PRECONDITION: "namenode:8020"
   #   depends_on:
-  #     - namenode
+  #     - "namenode"
   #   deploy:
   #     resources:
   #       limits:
-  #         memory: 512m
+  #         memory: 1152m
 
   # datanode-3:
   #   image: jontavpess/hadoop-base:latest
@@ -64,11 +64,11 @@ services:
   #   environment:
   #     SERVICE_PRECONDITION: "namenode:8020"
   #   depends_on:
-  #     - namenode
+  #     - "namenode"
   #   deploy:
   #     resources:
   #       limits:
-  #         memory: 1024m
+  #         memory: 1152m
 
   jupyter-spark:
     image: jontavpess/jupyter-spark-base:latest

@@ -15,6 +15,8 @@ JupyterSpark:
     - spark cria um executor para cada node, tentar limitar a 1 por cluster (Parece que não é possível) @done
     - Verificar se funciona com a memória cravada 800 (Cada dadanode) @done
     - Futuramente adicionar kernels customizados
+    - Ver se iniciando manualmente spark consigo fazer funcionar só com 1 executor
+    - sPARK IGNORA COMPLETAMENTE QUALQUER CONFIGURAÇÃO DE USO DE HARDWARE, NUM DE EXECUTORES ETC
 
 Hive:
     -Ler documentação e criar Dockerfile 

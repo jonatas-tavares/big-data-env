@@ -33,5 +33,9 @@ manter arquitetura e somente adicionar mais data nodes quando quiser mais memór
 
 com dois datanodes yarn.nodemanager.resource.memory-mb 896 é suficiente
 
+Só consigo utilizar o spark com dois executores (ler arquivos), não sei o motivo, de qualquer forma o melhor parece ser manter os datanodes com 1gb de memória total considerando os
+ 896 de cada executor. Isso dá uma margem e ajuda na escalabilidade com mais nodes multiplos de 1gb. Importante lembrar é que apesar desses valores das configurações
+ dificilmente os mesmos são atingidos, com a leitura de arquivos de 1gb com spark levando a memória dos datanodes até 500mb
 
-
+ Não eram dois executores!!!!!!! era o aplication master spark e o executor spark, os dois precisam rodar no cluster para o Spark funcionar (spark no modo client) e os dois tem 
+ o memoryOverhead de 384, logo estava realmente faltando recursos

@@ -38,8 +38,6 @@ RUN apt-get update \
     && mkdir -p /usr/share/jupyter/kernels/
 
 
-EXPOSE 4040 9000 8888
-
 # PySpark configurarion
 ENV PYSPARK_DRIVER_PYTHON='jupyter'
 ENV PYSPARK_DRIVER_PYTHON_OPTS='notebook'
@@ -60,5 +58,7 @@ COPY config/spark-defaults.conf ${SPARK_HOME}/conf/
 COPY config/slaves ${SPARK_HOME}/conf/
 COPY config/PySpark /usr/share/jupyter/kernels/PySpark
 COPY ./scripts/bootstrap.sh /
+
+EXPOSE 4040 9000 8888
 
 CMD ["bin/bash", "/bootstrap.sh"]
