@@ -44,25 +44,8 @@ services:
   #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
   #   ports:
   #     - "8043:8042"
-  #   environment:
-  #     SERVICE_PRECONDITION: "namenode:8020"
-  #   depends_on:
-  #     - "namenode"
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         memory: 1152m
-
-  # datanode-3:
-  #   image: jontavpess/hadoop-base:latest
-  #   container_name: datanode-3
-  #   hostname: datanode-3
-  #   volumes:
-  #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
-  #   ports:
-  #     - "8044:8042"
-  #   environment:
-  #     SERVICE_PRECONDITION: "namenode:8020"
+  # #   environment:
+  # #     SERVICE_PRECONDITION: "namenode:8020"
   #   depends_on:
   #     - "namenode"
   #   deploy:

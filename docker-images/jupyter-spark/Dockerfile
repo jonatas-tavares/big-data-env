@@ -46,9 +46,6 @@ ENV PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 ENV PYTHONPATH $SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.5-src.zip:/usr/bin/python3:$PYTHONPATH
 ENV PATH $PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$SPARK_HOME/bin:$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH:$SCALA_HOME/bin
 
-#ADICIONADO
-#ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
-
 # Istalling Python libraries
 COPY ./config/requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
