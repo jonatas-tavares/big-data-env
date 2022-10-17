@@ -13,7 +13,7 @@ services:
       - "8020:8020"
       - "8088:8088"
       - "9870:9870" 
-      - "50030:50030" #inútil
+      # - "50030:50030" #inútil
     deploy:
       resources:
         limits:
@@ -27,8 +27,8 @@ services:
       - ./user_data/hdfs/data:/usr/hadoop/dfs/data
     ports:
       - "8042:8042"
-    environment:
-      SERVICE_PRECONDITION: "namenode:8020"
+    # environment:
+    #   SERVICE_PRECONDITION: "namenode:8020"
     depends_on:
       - namenode
     deploy:
@@ -81,7 +81,7 @@ services:
      - "namenode"
     ports:
       - 8888:8888
-      - 9000:9000 #inútil
+      # - 9000:9000 #inútil
       - 4040:4040 
     deploy:
       resources:
