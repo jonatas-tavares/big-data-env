@@ -9,7 +9,7 @@ ENV HADOOP_HOME /usr/hadoop
 ENV HADOOP_CONF_DIR ${HADOOP_HOME}/etc/hadoop
 
 # JAVA environment variables
-ENV JAVA_HOME=$JAVA_HOME
+ENV JAVA_HOME $JAVA_HOME
 ENV PATH $PATH:$JAVA_HOME:$JAVA_HOME/bin
 
 # SCALA environment variables
@@ -39,7 +39,7 @@ RUN apt-get update \
 
 
 # PySpark configurarion
-ENV PYSPARK_PYTHON python3
+ENV PYSPARK_PYTHON='python3'
 ENV PYSPARK_DRIVER_PYTHON='jupyter'
 ENV PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
