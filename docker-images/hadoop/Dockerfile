@@ -2,14 +2,14 @@ FROM openjdk:8-jdk-slim
 
 LABEL maintainer="Jônatas Tavares <jontavpess@gmail.com>"
 
-# Hadoop environment variables
+# HADOOP environment variables
 ENV HADOOP_VERSION 3.3.4
 ENV HADOOP_MINOR_VERSION 3.3
 ENV HADOOP_HOME /usr/hadoop
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 
 # Use if debugging
-#COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
+# COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
 
 # Tuning and installing hadoop components
 RUN mkdir -p usr/hadoop /usr/hadoop/dfs/name /usr/hadoop/dfs/data \
@@ -38,15 +38,13 @@ COPY ./config/*.xml ${HADOOP_CONF_DIR}
 COPY ./config/workers ${HADOOP_CONF_DIR}
 COPY ./scripts/bootstrap.sh /
 
-# Set JAVA environment
+# Set JAVA environment variables
 ENV JAVA_HOME=$JAVA_HOME
 ENV PATH $PATH:$JAVA_HOME/bin
 
-# Add Hadoop to path
+# Add HADOOP to path
 ENV PATH=$PATH:$HADOOP_HOME
 ENV PATH=$PATH:$HADOOP_HOME/bin
-#ADICIONADO
-ENV LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 
 EXPOSE 8020 8088
 

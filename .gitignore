@@ -1,4 +1,4 @@
 input/
 user_data/
-hadoop/assets/*
-jupyter-spark/assets/*
+docker-images/hadoop/assets/*
+docker-images/jupyter-spark/assets/*

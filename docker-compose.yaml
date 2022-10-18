@@ -12,47 +12,55 @@ services:
     ports:
       - "8020:8020"
       - "8088:8088"
-      - "9870:9870"
-      - "50030:50030"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1536m
+      - "9870:9870" 
+    deploy:
+      resources:
+        limits:
+          memory: 512m
 
-  datanode:
+  datanode-1:
     image: jontavpess/hadoop-base:latest
-    container_name: datanode
-    hostname: datanode
+    container_name: datanode-1
+    hostname: datanode-1
     volumes:
       - ./user_data/hdfs/data:/usr/hadoop/dfs/data
-    environment:
-      SERVICE_PRECONDITION: "namenode:8020"
+    ports:
+      - "8042:8042"
     depends_on:
       - namenode
-    ports:
-      - "8021:8021"
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1536m
+    deploy:
+      resources:
+        limits:
+          memory: 1152m
+
+  # datanode-2:
+  #   image: jontavpess/hadoop-base:latest
+  #   container_name: datanode-2
+  #   hostname: datanode-2
+  #   volumes:
+  #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
+  #   ports:
+  #     - "8043:8042"
+  #   depends_on:
+  #     - "namenode"
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 1152m
 
   jupyter-spark:
     image: jontavpess/jupyter-spark-base:latest
     container_name: jupyter-spark
     hostname: jupyter-spark
     volumes:
-      - ./user_data/notebooks:/mnt/notebooks
       - ./input:/usr/input
-    # env_file:
-    #   - ./docker-images/jupyter-spark/config/jupyter-spark.env
-    # environment:
-    #   SPARK_MASTER: local[*]
+      - ./user_data/jupyter:/mnt/jupyter
     depends_on:
      - "namenode"
-     - "datanode"
     ports:
       - 8888:8888
-      - 4040:4040
-      # - 4041:4041
-      # - 4042:4042
-      # - 4043:4043
+      - 4040:4040 
+    deploy:
+      resources:
+        limits:
+          memory: 512m #If limited, impossible to read the entire dataset to memory with pandas DF / need around 3g to be able to read the entire dataframe in pandas
