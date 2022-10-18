@@ -53,13 +53,13 @@ services:
     container_name: jupyter-spark
     hostname: jupyter-spark
     volumes:
-      - ./user_data/jupyter:/mnt/jupyter
       - ./input:/usr/input
+      - ./user_data/jupyter:/mnt/jupyter
     depends_on:
      - "namenode"
     ports:
-      - 8888:8888
-      - 4040:4040 
+      - 4040:4040
+      - 8888:8888      
     deploy:
       resources:
         limits:

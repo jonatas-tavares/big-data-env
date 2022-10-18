@@ -9,7 +9,7 @@ ENV HADOOP_HOME /usr/hadoop
 ENV HADOOP_CONF_DIR ${HADOOP_HOME}/etc/hadoop
 
 # JAVA environment variables
-ENV JAVA_HOME=$JAVA_HOME
+ENV JAVA_HOME $JAVA_HOME
 ENV PATH $PATH:$JAVA_HOME:$JAVA_HOME/bin
 
 # SCALA environment variables
@@ -57,6 +57,6 @@ COPY config/slaves ${SPARK_HOME}/conf/
 COPY config/PySpark /usr/share/jupyter/kernels/PySpark
 COPY ./scripts/bootstrap.sh /
 
-EXPOSE 4040 9000 8888
+EXPOSE 4040 8888
 
 CMD ["bin/bash", "/bootstrap.sh"]

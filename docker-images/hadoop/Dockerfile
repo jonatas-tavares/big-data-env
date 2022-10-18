@@ -6,7 +6,7 @@ LABEL maintainer="Jônatas Tavares <jontavpess@gmail.com>"
 ENV HADOOP_VERSION 3.3.4
 ENV HADOOP_MINOR_VERSION 3.3
 ENV HADOOP_HOME /usr/hadoop
-ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
+ENV HADOOP_CONF_DIR ${HADOOP_HOME}/etc/hadoop
 
 # Use if debugging
 # COPY ./assets/hadoop-${HADOOP_VERSION}.tar.gz /tmp
@@ -39,13 +39,13 @@ COPY ./config/workers ${HADOOP_CONF_DIR}
 COPY ./scripts/bootstrap.sh /
 
 # Set JAVA environment variables
-ENV JAVA_HOME=$JAVA_HOME
+ENV JAVA_HOME $JAVA_HOME
 ENV PATH $PATH:$JAVA_HOME/bin
 
 # Add HADOOP to path
-ENV PATH=$PATH:$HADOOP_HOME
-ENV PATH=$PATH:$HADOOP_HOME/bin
+ENV PATH $PATH:$HADOOP_HOME
+ENV PATH $PATH:$HADOOP_HOME/bin
 
-EXPOSE 8020 8088
+EXPOSE 8020 8088 9870
 
 CMD [ "/bin/bash", "/bootstrap.sh" ]
