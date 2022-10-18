@@ -2,7 +2,7 @@
 
 CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
 
-#Time needed to HDFS leaves the Safe Mode
+# Time needed to HDFS leaves the Safe Mode
 echo "-- Aguardando inicialização do HDFS --"
 sleep 60
 
@@ -12,7 +12,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo "-- First container startup --"
     sleep 2
 
-    #Create shared dir in HDFS to put Spark JARS (acelera a distribuição)
+    # Create shared dir in HDFS to put Spark JARS (acelera a distribuição)
     echo "-- copying Jars --"
     sleep 2
     hdfs dfs -mkdir -p /user/spark/share/lib
@@ -28,7 +28,7 @@ fi
 echo "-- Starting Notebook --"
 sleep 2
 
-#Go to dir matching Volume in Docker-compose to start jupyter
+# Go to dir matching Volume in Docker-compose to start jupyter
 cd /mnt/jupyter
 
 # Start jupyter without autentication 

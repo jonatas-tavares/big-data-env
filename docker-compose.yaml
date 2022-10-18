@@ -13,7 +13,6 @@ services:
       - "8020:8020"
       - "8088:8088"
       - "9870:9870" 
-      # - "50030:50030" #inútil
     deploy:
       resources:
         limits:
@@ -27,8 +26,6 @@ services:
       - ./user_data/hdfs/data:/usr/hadoop/dfs/data
     ports:
       - "8042:8042"
-    # environment:
-    #   SERVICE_PRECONDITION: "namenode:8020"
     depends_on:
       - namenode
     deploy:
@@ -44,8 +41,6 @@ services:
   #     - ./user_data/hdfs/data:/usr/hadoop/dfs/data
   #   ports:
   #     - "8043:8042"
-  # #   environment:
-  # #     SERVICE_PRECONDITION: "namenode:8020"
   #   depends_on:
   #     - "namenode"
   #   deploy:
@@ -64,9 +59,8 @@ services:
      - "namenode"
     ports:
       - 8888:8888
-      # - 9000:9000 #inútil
       - 4040:4040 
     deploy:
       resources:
         limits:
-          memory: 512m #Se for limitada, impossível ler todo dataset para memória com DF do pandas / precisa em torno de 3g pra conseguir ler todo o dataframe no pandas
+          memory: 512m #If limited, impossible to read the entire dataset to memory with pandas DF / need around 3g to be able to read the entire dataframe in pandas

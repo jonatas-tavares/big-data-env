@@ -1,4 +1,3 @@
-
 findspark
 
 # Plot libs
@@ -14,6 +13,6 @@ pandas
 pyarrow
 fastparquet
 
-# Functionable libs
+# libs needed for functionality
 nbconvert>=6.4.4
 jinja2>=3.0.3

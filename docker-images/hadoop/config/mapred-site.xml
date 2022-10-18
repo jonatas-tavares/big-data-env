@@ -21,6 +21,7 @@
         <name>mapreduce.map.memory.mb</name>
         <value>128</value>
     </property>
+    <!-- Recomended 75% of memory set -->
     <property>
         <name>mapreduce.map.java.opts</name>
         <value>-Xmx96m</value>
@@ -29,6 +30,7 @@
         <name>mapreduce.reduce.memory.mb</name>
         <value>128</value>
     </property>
+    <!-- Recomended 75% of memory set -->
     <property>
         <name>mapreduce.reduce.java.opts</name>
         <value>-Xmx96m</value>
@@ -37,6 +39,7 @@
         <name>yarn.app.mapreduce.am.resource.mb</name>
         <value>256</value>
     </property>
+    <!-- Recomended 75% of memory set -->
     <property>
         <name>yarn.app.mapreduce.am.command-opts</name>
         <value>-Xmx192m</value>
