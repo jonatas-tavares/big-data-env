@@ -53,8 +53,8 @@ services:
     container_name: jupyter-spark
     hostname: jupyter-spark
     volumes:
-      - ./user_data/jupyter:/mnt/jupyter
       - ./input:/usr/input
+      - ./user_data/jupyter:/mnt/jupyter
     depends_on:
      - "namenode"
     ports:

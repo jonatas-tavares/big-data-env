@@ -3,9 +3,6 @@
 service ssh start
 
 if [ "$HOSTNAME" = namenode ]; then
-    # The namenode needs to be formatted on his first start or it loses functionality
-    # But formatting only the namenode with persistent data in the datanode leads to bugs
-    # If you format everything there is no data continuity
 
     CONTAINER_ALREADY_STARTED="CONTAINER_ALREADY_STARTED_PLACEHOLDER"
     DIR="/usr/hadoop/dfs/name"
