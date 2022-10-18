@@ -24,7 +24,7 @@ ENV SPARK_HOME /usr/spark
 
 RUN apt-get update \
     && apt-get install -y \
-    python3 python3-pip python3-dev jupyter \
+    python3-pip python3-dev jupyter \
     # Spark
     && wget -P /tmp "http://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_MAJOR_VERSION}-scala${SCALA_MINOR_VERSION}.tgz" \
     && mkdir ${SPARK_HOME} \
@@ -39,6 +39,7 @@ RUN apt-get update \
 
 
 # PySpark configurarion
+ENV PYSPARK_PYTHON python3
 ENV PYSPARK_DRIVER_PYTHON='jupyter'
 ENV PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
