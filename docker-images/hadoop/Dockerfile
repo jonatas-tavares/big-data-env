@@ -46,6 +46,6 @@ ENV PATH $PATH:$JAVA_HOME/bin
 ENV PATH $PATH:$HADOOP_HOME
 ENV PATH $PATH:$HADOOP_HOME/bin
 
-EXPOSE 8020 8088
+EXPOSE 8020 8088 9870
 
-CMD [ "/bin/bash", "/bootstrap.sh" ]
+CMD ["/bin/bash", "/bootstrap.sh" ]

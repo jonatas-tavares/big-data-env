@@ -58,8 +58,8 @@ services:
     depends_on:
      - "namenode"
     ports:
+      - 4040:4040
       - 8888:8888
-      - 4040:4040 
     deploy:
       resources:
         limits:

@@ -57,6 +57,6 @@ COPY config/slaves ${SPARK_HOME}/conf/
 COPY config/PySpark /usr/share/jupyter/kernels/PySpark
 COPY ./scripts/bootstrap.sh /
 
-EXPOSE 4040 9000 8888
+EXPOSE 4040 8888
 
 CMD ["bin/bash", "/bootstrap.sh"]
