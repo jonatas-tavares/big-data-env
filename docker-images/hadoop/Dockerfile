@@ -48,4 +48,4 @@ ENV PATH $PATH:$HADOOP_HOME/bin
 
 EXPOSE 8020 8088 9870
 
-CMD [ "/bin/bash", "/bootstrap.sh" ]
+CMD ["/bin/bash", "/bootstrap.sh" ]
