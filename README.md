@@ -34,7 +34,7 @@ To start the cluster after being stoped:
 ````
 
 
-## Acesso WebUI dos Frameworks
+## Access WebUI of Frameworks
 - HDFS http://localhost:9870
 
 - ResourceManager http://localhost:8088
@@ -44,7 +44,7 @@ To start the cluster after being stoped:
 - Spark http://localhost:4040
 
 
-## Acesso por shell
+## Access by shell
 HDFS
 ````
     docker exec -it datanode bash
